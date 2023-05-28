@@ -28,7 +28,7 @@ class HospitalsController < ApplicationController
         format.html { redirect_to hospital_url(@hospital), notice: "Hospital was successfully created." }
         format.json { render :show, status: :created, location: @hospital }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @hospital.errors, status: :unprocessable_entity }
       end
     end
@@ -41,7 +41,7 @@ class HospitalsController < ApplicationController
         format.html { redirect_to hospital_url(@hospital), notice: "Hospital was successfully updated." }
         format.json { render :show, status: :ok, location: @hospital }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @hospital.errors, status: :unprocessable_entity }
       end
     end
