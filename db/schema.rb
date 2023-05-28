@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_28_153021) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_28_173727) do
   create_table "departments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "number"
@@ -28,6 +28,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_153021) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_doctor_patients_on_doctor_id"
     t.index ["patient_id"], name: "index_doctor_patients_on_patient_id"
+  end
+
+  create_table "doctor_specialties", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "specialty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_doctor_specialties_on_doctor_id"
+    t.index ["specialty_id"], name: "index_doctor_specialties_on_specialty_id"
   end
 
   create_table "doctors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -64,16 +73,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_153021) do
 
   create_table "specialties", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.bigint "doctor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_specialties_on_doctor_id"
   end
 
   add_foreign_key "departments", "hospitals"
   add_foreign_key "doctor_patients", "doctors"
   add_foreign_key "doctor_patients", "patients"
+  add_foreign_key "doctor_specialties", "doctors"
+  add_foreign_key "doctor_specialties", "specialties"
   add_foreign_key "doctors", "departments"
   add_foreign_key "patients", "patient_cards"
-  add_foreign_key "specialties", "doctors"
 end

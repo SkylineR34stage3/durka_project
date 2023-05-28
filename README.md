@@ -1,24 +1,27 @@
-# README
+# Sokolov Artem CS-32
+Durka app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## HTTP Verbs
+| HTTP METHOD | URL             | Payload | Description                  |
+|-------------|-----------------|---------|------------------------------|
+| GET         | /users/:user_id | {id: 2} | test test test test                      |
+| GET         | /books          | {}      | testtesttesttesttest |
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## ERD diagram
 
-* Database initialization
 
-* How to run the test suite
+### Labs
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [ ] Task 1 -> Вставити 100 записів у ваші таблиці. У кожній групі по 6 таблиць в 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  У кожній моделі повинні бути методи на оновлення. В 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  Зробити по 2 SQL VIEW. To check sql views run `results = HospitalDoctorsCount.all` or `results = DoctorPatientsCount.all`
+- [ ] Task 2 --> Вставити 100 записів у ваші таблиці. У кожній групі по 6 таблиць в 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  У кожній моделі повинні бути методи на оновлення. В 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  Зробити по 2 SQL VIEW.
+- [ ] Task 3 --> Вставити 100 записів у ваші таблиці. У кожній групі по 6 таблиць в 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  У кожній моделі повинні бути методи на оновлення. В 3 таблиці зробити методи, які будуть обгорткою на чистому SQL. У 3 таблиці просто на ОРМ.
+  Зробити по 2 SQL VIEW.
