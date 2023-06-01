@@ -45,3 +45,4 @@ end
 100.times do
   DoctorPatient.create(doctor_id: Doctor.pluck(:id).sample, patient_id: Patient.pluck(:id).sample)
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

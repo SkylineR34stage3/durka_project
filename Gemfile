@@ -89,3 +89,9 @@ gem "csv", "~> 3.2"
 gem "pdfkit", "~> 0.8.7"
 
 gem "prawn", "~> 2.4"
+
+gem "activeadmin", "~> 2.13"
+
+gem "sassc", "~> 2.4"
+
+gem "bootstrap", "~> 5.2"
