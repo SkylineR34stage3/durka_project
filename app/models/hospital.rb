@@ -19,16 +19,25 @@ class Hospital < ApplicationRecord
     csv_text = File.read('app/assets/csv/hospitals.csv')
     csv = CSV.parse(csv_text, headers: true)
 
-    csv.each do |row|
-      hospital = Hospital.new
-      hospital.name = row['Facility.Name']
-      hospital.address = row['Facility.City']
-      hospital.creation_date = Faker::Date.backward(days: 365)
-      hospital.facility_type = row['Facility.Type']
-      hospital.city = row['Facility.City']
-      hospital.mortality = row['Rating.Mortality']
-      hospital.save
+    threads = []
+    mutex = Mutex.new
+
+    csv.each_slice(100) do |rows|
+      threads << Thread.new do
+        rows.each do |row|
+          hospital = Hospital.new
+          hospital.name = row['Facility.Name']
+          hospital.address = row['Facility.City']
+          hospital.creation_date = Faker::Date.backward(days: 365)
+          hospital.facility_type = row['Facility.Type']
+          hospital.city = row['Facility.City']
+          hospital.mortality = row['Rating.Mortality']
+          mutex.synchronize { hospital.save }
+        end
+      end
     end
+
+    threads.each(&:join)
   end
 
   def self.to_csv
