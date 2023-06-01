@@ -81,3 +81,6 @@ gem "devise", "~> 4.9"
 gem "omniauth-google-oauth2", "~> 1.1"
 
 gem "kaminari", "~> 1.2"
+
+gem "nokogiri", "~> 1.15"
+gem "open-uri", "~> 0.3.0"
