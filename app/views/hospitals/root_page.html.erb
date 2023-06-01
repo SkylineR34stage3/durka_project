@@ -4,6 +4,9 @@
 
 <%= link_to "Go to Hospitals Index", hospitals_path %>
 
+<h3>Admin Admin Admin!</h3>
+<a href="<%= admin_root_path %>" class="btn btn-warning">Go to admin panel</a>
+
 <p>Download data:</p>
 <a href="<%= download_csv_path(format: :csv) %>" class="btn btn-primary">Download CSV</a>
 <a href="<%= download_pdf_hospitals_path(format: :pdf) %>" class="btn btn-secondary">Download PDF</a>
