@@ -30,4 +30,18 @@ class Hospital < ApplicationRecord
       hospital.save
     end
   end
+
+  def self.to_csv
+    attributes = %w[name address creation_date facility_type city mortality patient_name patient_date_of_birth]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.left_outer_joins(doctors: :patients)
+         .select('hospitals.name, hospitals.address, hospitals.creation_date, hospitals.facility_type, hospitals.city, hospitals.mortality, patients.full_name AS patient_name, patients.date_of_birth AS patient_date_of_birth')
+         .each do |hospital|
+        csv << hospital.attributes.values_at(*attributes)
+      end
+    end
+  end
 end

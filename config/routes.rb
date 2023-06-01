@@ -3,14 +3,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get 'hospitals/download_csv', to: 'hospitals#download_csv', as: :download_csv
+
   resources :patients
   resources :patient_cards
   resources :specialties
   resources :doctors
   resources :departments
-  resources :hospitals
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :hospitals do
+    collection do
+      get 'download_pdf'
+    end
+  end
 end
