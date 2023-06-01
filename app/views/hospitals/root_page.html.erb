@@ -3,3 +3,7 @@
 <p>This is the root page of the application.</p>
 
 <%= link_to "Go to Hospitals Index", hospitals_path %>
+
+<p>Download data:</p>
+<a href="<%= download_csv_path(format: :csv) %>" class="btn btn-primary">Download CSV</a>
+<a href="<%= download_pdf_hospitals_path(format: :pdf) %>" class="btn btn-secondary">Download PDF</a>

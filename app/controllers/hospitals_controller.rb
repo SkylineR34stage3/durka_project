@@ -23,6 +23,45 @@ class HospitalsController < ApplicationController
   def root_page
   end
 
+  def download_csv
+    @hospitals = Hospital.includes(:patients)
+
+    respond_to do |format|
+      format.csv do
+        csv_data = Hospital.to_csv
+        send_data csv_data, filename: 'hospitals_and_patients.csv', type: 'text/csv'
+      end
+    end
+  end
+
+
+  def download_pdf
+    @hospitals = Hospital.includes(:patients)
+
+    respond_to do |format|
+      format.pdf do
+        pdf = Prawn::Document.new
+
+        @hospitals.each do |hospital|
+          pdf.text "Hospital: #{hospital.name}"
+          pdf.text "Address: #{hospital.address}"
+          pdf.text "Creation Date: #{hospital.creation_date}"
+
+          hospital.patients.each do |patient|
+            pdf.text "Patient: #{patient.full_name}"
+            pdf.text "Date of Birth: #{patient.date_of_birth}"
+            pdf.move_down 10
+          end
+
+          pdf.start_new_page # Start a new page for each hospital
+        end
+
+        send_data pdf.render, filename: 'hospitals_and_patients.pdf', type: 'application/pdf', disposition: 'attachment'
+      end
+    end
+  end
+
+
   # POST /hospitals or /hospitals.json
   def create
     @hospital = Hospital.new(hospital_params)

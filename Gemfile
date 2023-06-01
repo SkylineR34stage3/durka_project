@@ -84,3 +84,8 @@ gem "kaminari", "~> 1.2"
 
 gem "nokogiri", "~> 1.15"
 gem "open-uri", "~> 0.3.0"
+
+gem "csv", "~> 3.2"
+gem "pdfkit", "~> 0.8.7"
+
+gem "prawn", "~> 2.4"
