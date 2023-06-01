@@ -79,3 +79,5 @@ gem "faker", "~> 3.2"
 gem "devise", "~> 4.9"
 
 gem "omniauth-google-oauth2", "~> 1.1"
+
+gem "kaminari", "~> 1.2"

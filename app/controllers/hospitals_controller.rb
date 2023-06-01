@@ -3,11 +3,12 @@ class HospitalsController < ApplicationController
 
   # GET /hospitals or /hospitals.json
   def index
-    @hospitals = Hospital.all
+    @hospitals = HospitalQuery.new(Hospital.all, params).call.page(params[:page]).per(10)
   end
 
   # GET /hospitals/1 or /hospitals/1.json
   def show
+    @patients = PatientQuery.new(@hospital.patients, params).call.page(params[:page]).per(10)
   end
 
   # GET /hospitals/new
@@ -17,6 +18,9 @@ class HospitalsController < ApplicationController
 
   # GET /hospitals/1/edit
   def edit
+  end
+
+  def root_page
   end
 
   # POST /hospitals or /hospitals.json
